@@ -12,7 +12,11 @@
     @apply p-4 text-xl;
   }
   h1 {
-    @apply text-3xl md:text-4xl font-bold;
+    @apply text-3xl md:text-4xl font-bold text-[#C8ACD6];
+  }
+  
+  .text-custom-orange {
+    color: #F9A456;
   }
   h2 {
     @apply text-2xl md:text-3xl font-bold;

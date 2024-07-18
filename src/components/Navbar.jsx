@@ -7,7 +7,7 @@ const Navbar = () => {
   };
   return (
     <nav className='flex justify-between items-center h-20 px-4 absolute top-0 left-0 z-10 w-full text-white bg-transparent'>
-      <h1>Beaches.</h1>
+      <h1>Nomad</h1>
       <ul className='hidden md:flex'>
         <li>
           <a href=''>Home</a>
@@ -22,7 +22,7 @@ const Navbar = () => {
           <a href=''>Views</a>
         </li>
         <li>
-          <a href=''>Book</a>
+          <a href='https://app.push.org/chat/pushai.eth'>Book</a>
         </li>
       </ul>
       <div className='hidden md:flex'>
@@ -106,7 +106,7 @@ const Navbar = () => {
               <a href=''>Views</a>
             </li>
             <li className='border-b-2 border-b-gray-600'>
-              <a href=''>Book</a>
+              <a href='https://app.push.org/chat/pushai.eth'>Book</a>
             </li>
           </ul>
           <button className='w-full mb-4 btn'>Search</button>

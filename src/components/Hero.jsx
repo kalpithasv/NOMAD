@@ -1,29 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
+import nomadback from '../assets/nomadback.jpg';
 
-import bgVideo from '../assets/beachVid.mp4';
+const cities = [
+  'Jaipur',
+  'Delhi',
+  'Goa',
+'Mumbai',
+];
 
 const Hero = () => {
+  const [inputValue, setInputValue] = useState('');
+  const [filteredCities, setFilteredCities] = useState([]);
+
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    setInputValue(value);
+    if (value) {
+      setFilteredCities(cities.filter(city => city.toLowerCase().includes(value.toLowerCase())));
+    } else {
+      setFilteredCities([]);
+    }
+  };
+
   return (
     <header className='w-screen h-screen relative'>
-      <video
-        src={bgVideo}
-        className='w-full h-full object-cover'
-        autoPlay
-        loop
-        muted
-      />
+      <img src={nomadback} alt="Background" className='absolute top-0 left-0 w-full h-full object-cover' />
       <div className='absolute top-0 left-0 w-full h-full bg-gray-900/30'></div>
       <div className='absolute top-0 left-0 w-full h-full flex flex-col justify-center text-center'>
-        <h1 className='text-white mb-2'>First Class Travel</h1>
-        <h2 className='text-white mb-4'>Top 1% Locations Worldwide</h2>
+        <h1 className='mb-2'>Explore the world</h1>
+        <h1 className='mb-4'>
+          with <span className='text-custom-orange'>Nomad</span>
+        </h1>
         <form
           action=''
-          className='flex border p-1 rounded-md text-black bg-gray-100/90 max-w-[700px] w-[80%] mx-auto'
+          className='relative flex border p-1 rounded-md text-black bg-gray-100/90 max-w-[700px] w-[80%] mx-auto'
         >
           <input
             type='text'
             placeholder='Search Destinations'
             className='grow bg-transparent outline-none'
+            value={inputValue}
+            onChange={handleInputChange}
           />
           <button className='w-11 btn--form'>
             <svg
@@ -41,6 +58,15 @@ const Hero = () => {
               />
             </svg>
           </button>
+          {filteredCities.length > 0 && (
+            <ul className='absolute left-0 right-0 top-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg z-10'>
+              {filteredCities.map((city, index) => (
+                <li key={index} className='p-2 hover:bg-gray-100 cursor-pointer'>
+                  {city}
+                </li>
+              ))}
+            </ul>
+          )}
         </form>
       </div>
     </header>
